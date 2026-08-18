@@ -1,6 +1,7 @@
 def add(num1,num2)
     return num1+num2;
 
-solution = add(19,31)
+def add():
+    assert add(4,5) ==3
+    assert add(4,-8) ==-4
 
-print(solution)
