@@ -1,1 +1,31 @@
+name: MyFirstGithubActionFile
+
+
+on : [push]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+
+    strategy:
+      matrix:
+        python-version: [3.12 ,3.11 ]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: setUpPython
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependency
+      run:  |
+        python -m pip install --upgrade pip
+        pip install pytest
+
+    - name: Run tests
+      run: |
+        python3 -m pytest code.py 
 
